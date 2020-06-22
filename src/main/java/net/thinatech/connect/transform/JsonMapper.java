@@ -1,17 +1,22 @@
 package net.thinatech.connect.transform;
 
+import lombok.extern.slf4j.Slf4j;
 import org.apache.kafka.common.config.ConfigDef;
 import org.apache.kafka.connect.sink.SinkRecord;
 import org.apache.kafka.connect.transforms.Transformation;
 
 import java.util.Map;
 
+@Slf4j
 public class JsonMapper implements Transformation<SinkRecord> {
 
     private final SnakeTransformer convertValue = new SnakeTransformer();
 
     @Override
     public SinkRecord apply(SinkRecord record) {
+
+        log.info("Record value of type {}", record.value().getClass());
+
         return new SinkRecord(record.topic(),
                 record.kafkaPartition(),
                 record.keySchema(),

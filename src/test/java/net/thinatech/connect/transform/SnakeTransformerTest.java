@@ -17,7 +17,7 @@ public class SnakeTransformerTest {
 
         byte[] jsonBytes = Files.readAllBytes(Paths.get(this.getClass().getResource("/data.json").getPath()));
 
-        byte[] transformed = new SnakeTransformer().convert(jsonBytes).getBytes();
+        byte[] transformed = new SnakeTransformer().convert(jsonBytes);
 
         Map output = new ObjectMapper().readValue(transformed, Map.class);
 

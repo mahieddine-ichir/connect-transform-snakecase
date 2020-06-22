@@ -1,0 +1,24 @@
+{
+  "name" : "ElasticsearchSinkConnector",
+  "config" : {
+    "connector.class" : "io.confluent.connect.elasticsearch.ElasticsearchSinkConnector",
+    "tasks.max" : "1",
+    "confluent.topic.bootstrap.servers": "192.168.1.5:9092",
+    "connection.url": "http://192.168.1.5:9200",
+    "batch.size": "2000",
+    "max.in.flight.requests": "5",
+    "max.buffered.records": "20000",
+    "retry.backoff.ms": "1000",
+    "connection.timeout.ms": "5000",
+    "write.method": "insert",
+    "type.name": "doc",
+    "schema.ignore": "true",
+    "value.converter.schemas.enable": "false",
+    "key.converter": "org.apache.kafka.connect.converters.IntegerConverter",
+    "value.converter": "org.apache.kafka.connect.json.JsonConverter",
+    "topics": "input_topic",
+    "transforms": "snake",
+    "transforms.snake.type": "net.thinatech.connect.transform.JsonMapper",
+    "transforms.snake.none": ""
+  }
+}

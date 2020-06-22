@@ -43,3 +43,9 @@ Run from the root folder
 ````bash
     docker build -f docker/Dockerfile . -t snake_transform
 ````
+
+## Install connector
+
+````bash
+    curl -vX POST http://localhost:8083/connectors -H "Content-Type: application/json" -d @example-config-es.json
+````

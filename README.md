@@ -27,7 +27,9 @@ A Kafka Connect transform that read Json data from Kafka (in bytes) and writes J
     "key.converter": "org.apache.kafka.connect.converters.IntegerConverter",
     "value.converter": "org.apache.kafka.connect.converters.ByteArrayConverter",
     "topics": "input_topic",
-    "transforms.snake.type": "net.thinatech.connect.transform.SnakeTransformer"
+    "transforms": "snake",
+    "transforms.snake.type": "net.thinatech.connect.transform.JsonMapper",
+    "transforms.snake.none": ""
   }
 }
 `````

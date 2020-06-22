@@ -1,0 +1,35 @@
+{
+  "id": "ichir",
+  "userEmail": "mahieddine.ichir@gmail.com",
+  "civilityInformation": {
+    "firstName": "mahieddine",
+    "lastName": "ichir",
+    "age": 40,
+    "address": {
+      "line1": "10 Rue du vélo",
+      "line2": "city",
+      "countryReference": "FR"
+    }
+  },
+  "tags": [
+    {
+      "name": "tag1",
+      "description": "tag1 description"
+    },
+    {
+      "name": "tag2",
+      "description": "tag2 description",
+      "tagCategory": "tagCat2"
+    }
+  ],
+  "innerField": {
+    "inner1": {
+      "anyField": "value11",
+      "anotherField": "valueOfField12"
+    },
+    "inner2": {
+      "anotherField": "valueOfField22",
+      "date": 1591863220703
+    }
+  }
+}

@@ -28,7 +28,7 @@ A Kafka Connect transform that read Json data from Kafka (in bytes) and writes J
     "value.converter": "org.apache.kafka.connect.converters.ByteArrayConverter",
     "topics": "input_topic",
     "transforms": "snake",
-    "transforms.snake.type": "net.thinatech.connect.transform.JsonMapper",
+    "transforms.snake.type": "net.thinatech.connect.transform.JsonSnakeMapper",
     "transforms.snake.none": ""
   }
 }
@@ -45,6 +45,8 @@ Run from the root folder
 ````bash
     docker build -f docker/Dockerfile . -t snake_transform
 ````
+
+An example of a `docker-compose` is also provided, running a zookeeper, a kafka (single node), and a connector example.
 
 ## Install connector
 

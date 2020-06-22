@@ -18,7 +18,7 @@
     "value.converter": "org.apache.kafka.connect.json.JsonConverter",
     "topics": "input_topic",
     "transforms": "snake",
-    "transforms.snake.type": "net.thinatech.connect.transform.JsonMapper",
+    "transforms.snake.type": "net.thinatech.connect.transform.JsonSnakeMapper",
     "transforms.snake.none": ""
   }
 }

@@ -1,0 +1,46 @@
+version: "3.7"
+services:
+  zookeeper:
+    image: confluentinc/cp-zookeeper
+    environment:
+      - ZOOKEEPER_CLIENT_PORT=2181
+    expose:
+      - 2181
+
+  kafka:
+    image: confluentinc/cp-kafka
+    environment:
+      - KAFKA_ZOOKEEPER_CONNECT=zookeeper:2181
+      - KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://192.168.1.4:9092
+      - KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR=1
+      - KAFKA_BROKER_ID=1
+    ports:
+      - "9092:9092"
+    depends_on:
+      - zookeeper
+
+  es:
+    image: elasticsearch:6.8.10
+    ports:
+      - "9200:9200"
+
+  connect:
+    build:
+      context: ./
+      dockerfile: docker/Dockerfile
+    environment:
+      - CONNECT_BOOTSTRAP_SERVERS=192.168.1.4:9092
+      - CONNECT_GROUP_ID=local
+      - CONNECT_CONFIG_STORAGE_TOPIC=connect_config
+      - CONNECT_OFFSET_STORAGE_TOPIC=connect-offset
+      - CONNECT_STATUS_STORAGE_TOPIC=connect-status
+      - CONNECT_KEY_CONVERTER=org.apache.kafka.connect.json.JsonConverter
+      - CONNECT_VALUE_CONVERTER=org.apache.kafka.connect.json.JsonConverter
+      - CONNECT_REST_ADVERTISED_HOST_NAME=connect
+      - CONNECT_CONFIG_STORAGE_REPLICATION_FACTOR=1
+      - CONNECT_OFFSET_STORAGE_REPLICATION_FACTOR=1
+      - CONNECT_STATUS_STORAGE_REPLICATION_FACTOR=1
+    ports:
+      - 8083:8083
+    depends_on:
+      - kafka

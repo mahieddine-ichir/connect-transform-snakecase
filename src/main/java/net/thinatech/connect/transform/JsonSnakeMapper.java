@@ -8,7 +8,7 @@ import org.apache.kafka.connect.transforms.Transformation;
 import java.util.Map;
 
 @Slf4j
-public class JsonMapper implements Transformation<SinkRecord> {
+public class JsonSnakeMapper implements Transformation<SinkRecord> {
 
     private final SnakeTransformer convertValue = new SnakeTransformer();
 

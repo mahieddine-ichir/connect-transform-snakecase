@@ -37,3 +37,9 @@ A Kafka Connect transform that read Json data from Kafka (in bytes) and writes J
 * _Docker image uses _confluentinc_ connect official image to build image._
 * Build jar before building image.
 * The `delete-unused.sh` removes the official image the unused connectors to optimize image start, modify accordingly.
+
+### Build the docker image
+Run from the root folder
+````bash
+    docker build -f docker/Dockerfile . -t snake_transform
+````

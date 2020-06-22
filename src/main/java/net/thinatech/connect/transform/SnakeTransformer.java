@@ -19,10 +19,10 @@ public class SnakeTransformer {
             .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false)
             .setSerializationInclusion(JsonInclude.Include.NON_NULL);
 
-    public byte[] convert(byte[] value) {
+    public String convert(byte[] value) {
         try {
             Map json = convert(objectMapper.readValue(value, Map.class));
-            return objectMapper.writeValueAsBytes(json);
+            return objectMapper.writeValueAsString(json);
         } catch (IOException e) {
             throw new ConnectException(e);
         }

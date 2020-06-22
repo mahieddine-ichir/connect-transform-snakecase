@@ -13,11 +13,11 @@ import java.util.Map;
 public class SnakeTransformerTest {
 
     @Test
-    public void convert() throws IOException {
+    public void convert_on_json_asbytes() throws IOException {
 
         byte[] jsonBytes = Files.readAllBytes(Paths.get(this.getClass().getResource("/data.json").getPath()));
 
-        byte[] transformed = new SnakeTransformer().convert(jsonBytes);
+        byte[] transformed = (byte[]) new SnakeTransformer().convert(jsonBytes);
 
         Map output = new ObjectMapper().readValue(transformed, Map.class);
 

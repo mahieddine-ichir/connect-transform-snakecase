@@ -46,7 +46,8 @@ Run from the root folder
     docker build -f docker/Dockerfile . -t snake_transform
 ````
 
-An example of a `docker-compose` is also provided, running a zookeeper, a kafka (single node), and a connector example.
+An example of a `docker-compose` is also provided, running a zookeeper, a kafka (single node), and a connector example, 
+along with an elasticsearch node.
 
 ## Install connector
 

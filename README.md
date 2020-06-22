@@ -1,8 +1,9 @@
 # Kafka Connect snake case transform
 A Kafka Connect transform that read Json data from Kafka (in bytes) and writes Json data in Snake case format.
 
-* _Uses Jackson fastxml ObjectMapper_
-* _Uses guava CaseFormat_ 
+* _Compatible with Confluent platform 5.4.1_
+* _Uses Jackson fastxml ObjectMapper_ (provided on confluent platform 5.4.1)
+* _Uses guava CaseFormat_ (provided on confluent platform 5.4.1)
 
 ## Usage example (Elasticsearch sink connect)
 

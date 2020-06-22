@@ -22,7 +22,7 @@ public class JsonMapper implements Transformation<SinkRecord> {
                 record.keySchema(),
                 record.key(),
                 record.valueSchema(),
-                convertValue.convert((byte [])record.value()),
+                convertValue.convert(record.value()),
                 record.kafkaOffset(),
                 record.timestamp(),
                 record.timestampType(),
@@ -32,7 +32,7 @@ public class JsonMapper implements Transformation<SinkRecord> {
 
     @Override
     public ConfigDef config() {
-        return new ConfigDef().define("none", ConfigDef.Type.STRING, ConfigDef.Importance.LOW, "no doc");
+        return new ConfigDef().define("none", ConfigDef.Type.STRING, "", ConfigDef.Importance.LOW, "no doc");
     }
 
     @Override

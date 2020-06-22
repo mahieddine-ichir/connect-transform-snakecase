@@ -12,14 +12,17 @@ import java.util.Map;
 
 public class SnakeTransformerTest {
 
+    SnakeTransformer snakeTransformer = new SnakeTransformer();
+
     @Test
-    public void convert_on_json_asbytes() throws IOException {
+    public void convert_on_json_asMap() throws IOException {
 
         byte[] jsonBytes = Files.readAllBytes(Paths.get(this.getClass().getResource("/data.json").getPath()));
+        Map input = new ObjectMapper().readValue(jsonBytes, Map.class);
+        Map output = (Map) snakeTransformer.convert(input);
 
-        byte[] transformed = (byte[]) new SnakeTransformer().convert(jsonBytes);
-
-        Map output = new ObjectMapper().readValue(transformed, Map.class);
+        //byte[] transformed = (byte[]) new SnakeTransformer().convert(jsonBytes);
+        //Map output = new ObjectMapper().readValue(transformed, Map.class);
 
         Assert.assertEquals("ichir", output.get("id"));
         Assert.assertEquals("mahieddine.ichir@gmail.com", output.get("user_email"));

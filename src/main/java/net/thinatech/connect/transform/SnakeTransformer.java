@@ -6,7 +6,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.base.CaseFormat;
 import org.apache.kafka.connect.errors.ConnectException;
 
-import java.io.IOException;
 import java.util.AbstractMap;
 import java.util.List;
 import java.util.Map;
@@ -20,19 +19,16 @@ public class SnakeTransformer {
             .setSerializationInclusion(JsonInclude.Include.NON_NULL);
 
     public Object convert(Object value) {
-        try {
-            if (value instanceof String) {
-                Map json = convert(objectMapper.readValue((String) value, Map.class));
-                return objectMapper.writeValueAsString(json);
-            } else if (value instanceof byte[]) {
-                Map json = convert(objectMapper.readValue((byte[]) value, Map.class));
-                return objectMapper.writeValueAsBytes(json);
+     //   try {
+            if (value instanceof Map) {
+                return convert((Map) value);
+                //return objectMapper.writeValueAsBytes(json);
             } else {
                 throw new ConnectException("Unhandled value class type "+value.getClass());
             }
-        } catch (IOException e) {
-            throw new ConnectException(e);
-        }
+//        } catch (IOException e) {
+  //          throw new ConnectException(e);
+    //    }
     }
 
     private Map convert(Map<?, ?> input) {

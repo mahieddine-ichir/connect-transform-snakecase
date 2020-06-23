@@ -29,7 +29,13 @@ public class SnakeTransformer {
                     if (e.getValue() instanceof Map) {
                         return new AbstractMap.SimpleEntry<String, Object>(key, convert((Map) e.getValue()));
                     } else if (e.getValue() instanceof List) {
-                        Object collect = ((List) e.getValue()).stream().map(v -> convert((Map) v)).collect(Collectors.toList());
+                        Object collect = ((List) e.getValue()).stream().map(v -> {
+                            if (v instanceof Map) {
+                                return convert((Map) v);
+                            } else {
+                                return v;
+                            }
+                        }).collect(Collectors.toList());
                         return new AbstractMap.SimpleEntry(key, collect);
                     } else {
                         return new AbstractMap.SimpleEntry<String, Object>(key, e.getValue());

@@ -31,5 +31,19 @@
       "anotherField": "valueOfField22",
       "date": 1591863220703
     }
-  }
+  },
+  "listOfStrings": [
+    "one",
+    "two"
+  ],
+  "listOfIntegers": [
+    1,
+    2,
+    3
+  ],
+  "listOfBooleans": [
+    true,
+    false
+  ],
+  "nillableField": null
 }

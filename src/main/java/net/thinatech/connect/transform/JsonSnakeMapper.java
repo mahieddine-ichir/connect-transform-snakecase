@@ -15,7 +15,7 @@ public class JsonSnakeMapper implements Transformation<SinkRecord> {
     @Override
     public SinkRecord apply(SinkRecord record) {
 
-        log.info("Record value of type {}", record.value().getClass());
+        log.debug("Record value of type {}", record.value().getClass());
 
         return new SinkRecord(record.topic(),
                 record.kafkaPartition(),
